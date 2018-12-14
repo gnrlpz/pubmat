@@ -60,7 +60,7 @@ public class RealmOperator {
         realm.commitTransaction();
     }
 
-    public ArrayList<OrgPost> getPostsfromOrg(int orgID) {
+    public ArrayList<OrgPost> getPostsfromOrg(String orgID) {
         realm.beginTransaction();
 
         RealmQuery<OrgPost> query = realm.where(OrgPost.class);

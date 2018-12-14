@@ -68,7 +68,7 @@ public class FeedAdapter extends BaseAdapter {
         ImageView postImg = linearLayout.findViewById(R.id.postImg);
 
         OrgPost currItem = (OrgPost) getItem(position);
-        Organization org = context.getOrgByID(currItem.getOriginalPoster());
+        Organization org = context.getOrgByName(currItem.getOriginalPoster());
 
         orgName.setText(org.getOrgName());
         postDesc.setText(currItem.getPostCaption());

@@ -31,7 +31,7 @@ public class NewsFeed extends AppCompatActivity {
         //data
 
         OrgPost op1 = new OrgPost();
-        op1.setOriginalPoster(1);
+        op1.setOriginalPoster("ORG");
         op1.setPostCaption("This is a test");
         op1.setPostID(1);
         op1.setPostPhoto("sample photo path");
@@ -44,9 +44,9 @@ public class NewsFeed extends AppCompatActivity {
 
     }
 
-    public Organization getOrgByID(int orgID)
+    public Organization getOrgByName(String orgName)
     {
-        return ro.getOrgByID(orgID);
+        return ro.getOrgByName(orgName);
     }
 
 }

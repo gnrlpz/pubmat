@@ -8,7 +8,7 @@ public class OrgPost extends RealmObject {
     @PrimaryKey
     private int postID;
 
-    private int originalPoster; //is an OrgID
+    private String originalPoster; //is an OrgName
 
     private String postPhoto;
     private String postCaption;
@@ -21,11 +21,11 @@ public class OrgPost extends RealmObject {
         this.postID = postID;
     }
 
-    public int getOriginalPoster() {
+    public String getOriginalPoster() {
         return originalPoster;
     }
 
-    public void setOriginalPoster(int originalPoster) {
+    public void setOriginalPoster(String originalPoster) {
         this.originalPoster = originalPoster;
     }
 

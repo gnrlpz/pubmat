@@ -6,22 +6,22 @@ import io.realm.annotations.PrimaryKey;
 public class Organization extends RealmObject{
 
     @PrimaryKey
-    private int orgID;
-
     private String orgName;
+
+    //private int orgID;
     private String orgDesc;
     private String orgShortDesc;
     private String orgPostIDs; //Use gson/json to get the ArrayList
     private String orgPicPath;
     private int postCount; //used to make IDs for OrgPosts
 
-    public int getOrgID() {
+    /*public int getOrgID() {
         return orgID;
     }
 
     public void setOrgID(int orgID) {
         this.orgID = orgID;
-    }
+    }*/
 
     public String getOrgName() {
         return orgName;

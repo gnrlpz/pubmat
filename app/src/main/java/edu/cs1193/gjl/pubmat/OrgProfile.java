@@ -42,7 +42,7 @@ public class OrgProfile extends AppCompatActivity {
     Button editButton;
 
     @Extra
-    int orgID; //get orgID from User clicking on Org Profile!!!
+    String orgID; //get orgID from User clicking on Org Profile!!! //orgID == orgName !!!
 
     @Bean
     RealmOperator realmOperator;
@@ -63,7 +63,7 @@ public class OrgProfile extends AppCompatActivity {
     }
 
     @Click(R.id.editButton)
-    public void editButtonAction() { OrgEdit_.intent(this).orgID(thisOrg.getOrgID()).start(); }
+    public void editButtonAction() { OrgEdit_.intent(this).orgID(thisOrg.getOrgName()).start(); }
 
     public void refreshImageView(String savedImagePath, ImageView imageView) {
         File getImageDir = getExternalCacheDir();
@@ -78,9 +78,9 @@ public class OrgProfile extends AppCompatActivity {
         }
     }
 
-    public Organization getOrgByID(int orgID)
+    public Organization getOrgByName(String orgName)
     {
-        return realmOperator.getOrgByID(orgID);
+        return realmOperator.getOrgByName(orgName);
     }
 
 }

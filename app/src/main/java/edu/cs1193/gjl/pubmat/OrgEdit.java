@@ -1,6 +1,9 @@
 package edu.cs1193.gjl.pubmat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +26,8 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 
@@ -48,7 +53,7 @@ public class OrgEdit extends AppCompatActivity {
     Button saveButton;
 
     @Extra
-    int orgID; //int or string???? //get orgID from Edit Button from OrgProfile!!
+    String orgID; //get orgName from Edit Button from OrgProfile!! //orgID == orgName (?)
 
     @Bean
     RealmOperator realmOperator;
@@ -77,13 +82,57 @@ public class OrgEdit extends AppCompatActivity {
         realmOperator.saveOrg(org);
         Toast t = Toast.makeText(this, "Org profile edited", Toast.LENGTH_LONG);
         t.show();
-        //OrgProfile_.intent(this).start();
+        OrgProfile_.intent(this).start();
         finish();
     }
 
 
-    public void editImage(View v) { //fix ImageActivity methods into this!!
+    public void editImage(View v) { ImageActivity_.intent(this).startForResult(0); }
 
+    public void onActivityResult(int requestCode, int responseCode, Intent data)
+    {
+        if (requestCode==0)
+        {
+            if (responseCode==100)
+            {
+                // save rawImage to file savedImage.jpeg
+                // load file via picasso
+                byte[] jpeg = data.getByteArrayExtra("rawJpeg");
+
+                try {
+                    File savedImage = saveFile(jpeg);
+                    //refreshImageView(savedImage);
+
+                    //imageUri = Uri.fromFile(savedImage);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    @NonNull
+    private File saveFile(byte[] jpeg) throws IOException {
+        File getImageDir = getExternalCacheDir();
+
+
+        ////File savedImage = new File(getImageDir, Integer.toString(position) + "savedImage.jpeg");
+
+        File savedImage = new File(getImageDir, orgID + "savedImage.jpeg");
+
+        FileOutputStream fos = new FileOutputStream(savedImage);
+        fos.write(jpeg);
+        fos.close();
+        return savedImage;
+    }
+
+    public void onDestroy()
+    {
+        super.onDestroy();
+        realmOperator.close();
     }
 
     public void refreshImageButton(String savedImagePath, ImageButton imageButton) {

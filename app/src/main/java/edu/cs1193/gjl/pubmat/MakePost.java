@@ -47,7 +47,7 @@ public class MakePost extends AppCompatActivity {
 
         or.setPostPhoto(postPhoto);
         or.setPostCaption(curPostDesc);
-        or.setOriginalPoster(orgPoster.getOrgID());
+        or.setOriginalPoster(orgPoster.getOrgName());
 
         ro.saveOrg(orgPoster);
         ro.saveOrgPost(or);
