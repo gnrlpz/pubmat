@@ -8,18 +8,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.androidannotations.annotations.Bean;
-
 import java.util.ArrayList;
+
 import edu.cs1193.gjl.pubmat.realmObjects.OrgPost;
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 
-public class FeedAdapter extends BaseAdapter {
+public class PostAdapter extends BaseAdapter {
 
     ArrayList<OrgPost> data;
-    NewsFeed context;
+    OrgProfile context;
 
-    public FeedAdapter(NewsFeed context, ArrayList<OrgPost> data)
+    public PostAdapter(OrgProfile context, ArrayList<OrgPost> data)
     {
         this.context = context;
         this.data = data;
@@ -64,8 +63,8 @@ public class FeedAdapter extends BaseAdapter {
         TextView orgName = linearLayout.findViewById(R.id.orgName);
         TextView postDesc = linearLayout.findViewById(R.id.postDesc);
 
-        ImageView orgPic = linearLayout.findViewById(R.id.orgImage);
-        ImageView postImg = linearLayout.findViewById(R.id.postImage);
+        ImageView orgPic = linearLayout.findViewById(R.id.imageView4);
+        ImageView postImg = linearLayout.findViewById(R.id.imageView6);
 
         OrgPost currItem = (OrgPost) getItem(position);
         Organization org = context.getOrgByID(currItem.getOriginalPoster());

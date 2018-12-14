@@ -1,8 +1,9 @@
 package edu.cs1193.gjl.pubmat.realmObjects;
 
+import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class OrgPost {
+public class OrgPost extends RealmObject {
 
     @PrimaryKey
     private int postID;

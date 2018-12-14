@@ -2,6 +2,7 @@ package edu.cs1193.gjl.pubmat;
 
 import org.androidannotations.annotations.EBean;
 
+import edu.cs1193.gjl.pubmat.realmObjects.OrgPost;
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 import io.realm.Realm;
 import io.realm.RealmQuery;
@@ -48,6 +49,13 @@ public class RealmOperator {
         realm.commitTransaction();
 
         //return managed;
+    }
+
+    public void saveOrgPost(OrgPost oP)
+    {
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(oP);
+        realm.commitTransaction();
     }
 
 }
