@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import edu.cs1193.gjl.pubmat.realmObjects.OrgPost;
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
+import edu.cs1193.gjl.pubmat.realmObjects.User;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -39,6 +40,18 @@ public class RealmOperator {
         query.equalTo("orgName", orgName);
 
         Organization o = query.findFirst();
+        realm.commitTransaction();
+
+        return o;
+    }
+
+    public User getUserByName(String userName)
+    {
+        realm.beginTransaction();
+        RealmQuery<User> query = realm.where(User.class);
+        query.equalTo("username", userName);
+
+        User o = query.findFirst();
         realm.commitTransaction();
 
         return o;

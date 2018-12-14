@@ -5,6 +5,7 @@ import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
@@ -27,13 +28,15 @@ public class NewsFeed extends AppCompatActivity {
     FeedAdapter adapter;
 
     @Extra
+    String userName;
+
     String orgName;
 
     @AfterViews
     public void init()
     {
         //data
-
+        ro.get
         OrgPost op1 = new OrgPost();
         op1.setOriginalPoster("ORG");
         op1.setPostCaption("This is a test");
@@ -41,6 +44,8 @@ public class NewsFeed extends AppCompatActivity {
         op1.setPostPhoto("sample photo path");
 
         feedPosts.add(op1);
+
+
 
         //adapter
         adapter = new FeedAdapter(this, feedPosts);
@@ -53,6 +58,7 @@ public class NewsFeed extends AppCompatActivity {
         return ro.getOrgByName(orgName);
     }
 
+    @Click(R.id.)
     public void onClickMakePost()
     {
         MakePost_.intent(this)

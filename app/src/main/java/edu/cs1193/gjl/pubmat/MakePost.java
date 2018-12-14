@@ -103,8 +103,8 @@ public class MakePost extends AppCompatActivity {
 
 
         ////File savedImage = new File(getImageDir, Integer.toString(position) + "savedImage.jpeg");
-
-        File savedImage = new File(getImageDir, orgName + "savedImage.jpeg");
+        Organization o = ro.getOrgByName(orgName);
+        File savedImage = new File(getImageDir,  + (o.getPostCount()+1) + "savedImage.jpeg");
 
         FileOutputStream fos = new FileOutputStream(savedImage);
         fos.write(jpeg);
