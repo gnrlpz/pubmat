@@ -45,7 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     @AfterViews
     public void init() {
         dataAdder.populateOrgs();
-        dataAdder.populatePosts();
+//        dataAdder.populatePosts();
+//        realmManager.populatePosts();
 
         dmc = new SharedPrefOperator(getApplicationContext());
         dmc.loadRemSharedPrefs();

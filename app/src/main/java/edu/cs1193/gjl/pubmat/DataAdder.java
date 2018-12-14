@@ -55,7 +55,15 @@ public class DataAdder {
         op.setPostPhoto("1CompSAtimage.jpg");
         op.setOriginalPoster("CompSAt");
 
+      OrgPost op2 = new OrgPost();
+
+        op2.setPostID("1CompSAt");
+        op2.setPostCaption("fjkalfjalkfjalksafsafs");
+        op2.setPostPhoto("1CompSAtimage.jpg");
+        op2.setOriginalPoster("CompSAt");
+
         realm.saveOrgPost(op);
+        realm.saveOrgPost(op2);
     }
 
 }

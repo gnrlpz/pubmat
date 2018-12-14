@@ -102,13 +102,40 @@ public class RealmOperator {
         return managed;
     }
 
-    public OrgPost getPosts()
+    public ArrayList<OrgPost> getPosts()
     {
         realm.beginTransaction();
-        OrgPost op = realm.where(OrgPost.class).findFirst();
+        RealmResults<OrgPost> results = realm.where(OrgPost.class).findAll();
         realm.commitTransaction();
+        ArrayList<OrgPost> ap = new ArrayList<>();
+        for(OrgPost o : results)
+        {
+            ap.add(o);
+        }
 
-        return op;
+        return ap;
+    }
+
+    public void populatePosts()
+    {
+        OrgPost op = new OrgPost();
+
+        op.setPostID("1CompSAt");
+        op.setPostCaption("NothingToSeeHere");
+        op.setPostPhoto("1CompSAtimage.jpg");
+        op.setOriginalPoster("CompSAt");
+
+        OrgPost op2 = new OrgPost();
+
+        op2.setPostID("2CompSAt");
+        op2.setPostCaption("fjkalfjalkfjalksafsafs");
+        op2.setPostPhoto("1CompSAtimage.jpg");
+        op2.setOriginalPoster("CompSAt");
+
+        realm.beginTransaction();
+        realm.copyToRealm(op);
+        realm.copyToRealm(op2);
+        realm.commitTransaction();
     }
 
     public void close() { realm.close(); }

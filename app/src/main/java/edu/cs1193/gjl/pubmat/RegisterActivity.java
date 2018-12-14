@@ -47,47 +47,70 @@ public class RegisterActivity extends AppCompatActivity {
     Uri imageuri;
     String unid;
 
-    String beingEdited;
-    boolean editMode;
+    User beingEdited;
+    boolean editMode = false;
 
     @AfterViews
     public void init() {
         unid = UUID.randomUUID().toString();
         if (!userIDforEdit.equals(null)) {
             editMode = true;
-            beingEdited = userIDforEdit;
+            beingEdited = realmManager.realm.where(User.class).equalTo("username", userIDforEdit).findFirst();
         }
+
+//        if(editMode) {
+//            name.setEnabled(false);
+//            registerButton.setText("Save");
+//            name.setText(beingEdited.getUsername());
+//            email.setText(beingEdited.getOrgName());
+//            password.setText(beingEdited.getPassword());
+//        }
     }
 
     @Click(R.id.registerButton)
     public void registerButtonAction() {
-        String nameTemp = name.getText().toString();
-        String position = email.getText().toString();
-        String passTemp = password.getText().toString();
+        if (editMode) {
+            String nameTemp = name.getText().toString();
+            String position = email.getText().toString();
+            String passTemp = password.getText().toString();
 
-        RealmResults<User> results = realmManager.realm.where(User.class).equalTo("username", nameTemp).findAll();
-        if(results.size() != 0 ) {
-            Toast t = Toast.makeText(this, "Username not available", Toast.LENGTH_LONG);
-            t.show();
-            return;
-        }
+            RealmResults<User> results = realmManager.realm.where(User.class).equalTo("username", nameTemp).findAll();
+            if(results.size() != 0 ) {
+                Toast t = Toast.makeText(this, "Username not available", Toast.LENGTH_LONG);
+                t.show();
+                return;
+            }
 
-        if (nameTemp.equals("") || passTemp.equals("")) {
-            Toast t = Toast.makeText(this, "Username and Password required.", Toast.LENGTH_LONG);
-            t.show();
+            if (nameTemp.equals("") || passTemp.equals("")) {
+                Toast t = Toast.makeText(this, "Username and Password required.", Toast.LENGTH_LONG);
+                t.show();
+            } else {
+                System.out.println("create character case");
+
+                User u = new User(nameTemp, position, passTemp);
+
+                System.out.println("generated: " + unid + "\nSet: " + u.getUsername());
+                u.setImagePath(unid + "savedImage.jpeg");
+                realmManager.saveUser(u);
+
+                Toast t = Toast.makeText(this, "Account created", Toast.LENGTH_LONG);
+                t.show();
+                LoginActivity_.intent(this).start();
+                finish();
+            }
         } else {
-            System.out.println("create character case");
+            String nameTemp = name.getText().toString();
+            String emailTemp = email.getText().toString();
+            String passTemp = password.getText().toString();
+            User u = realmManager.realm.copyFromRealm(realmManager.realm.where(User.class).equalTo("username", nameTemp).findFirst());
+            u.setOrgName(emailTemp);
+            u.setPassword(passTemp);
+//            u.setImagePath(u.getImagePath());
 
-            User u = new User(nameTemp, position, passTemp);
-
-            u.setUserID(unid);
-            System.out.println("generated: " + unid + "\nSet: " + u.getUserID());
-            u.setImagePath(unid + "savedImage.jpeg");
             realmManager.saveUser(u);
 
-            Toast t = Toast.makeText(this, "Account created", Toast.LENGTH_LONG);
+            Toast t = Toast.makeText(this, "Account edited", Toast.LENGTH_LONG);
             t.show();
-            LoginActivity_.intent(this).start();
             finish();
         }
 

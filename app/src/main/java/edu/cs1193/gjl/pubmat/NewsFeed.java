@@ -43,8 +43,7 @@ public class NewsFeed extends AppCompatActivity {
 
         unField.setText(userName);
 
-        ArrayList<OrgPost> orgPosts = new ArrayList<OrgPost>();
-        orgPosts.add(ro.getPosts());
+        ArrayList<OrgPost> orgPosts = ro.getPosts();
 
         //adapter
         adapter = new FeedAdapter(this, orgPosts);
