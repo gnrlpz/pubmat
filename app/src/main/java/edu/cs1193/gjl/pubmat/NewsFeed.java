@@ -2,6 +2,7 @@ package edu.cs1193.gjl.pubmat;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -20,6 +21,9 @@ public class NewsFeed extends AppCompatActivity {
 
     @ViewById
     ListView feed;
+
+    @ViewById (R.id.UserName)
+    TextView unField;
 
     @Bean
     RealmOperator ro;
@@ -45,7 +49,7 @@ public class NewsFeed extends AppCompatActivity {
 
         feedPosts.add(op1);
 
-
+        unField.setText(userName);
 
         //adapter
         adapter = new FeedAdapter(this, feedPosts);
@@ -63,6 +67,14 @@ public class NewsFeed extends AppCompatActivity {
     {
         MakePost_.intent(this)
                 .orgName(orgName)
+                .start();
+    }
+
+    @Click(R.id.profileButton)
+    public void onClickProfileButton()
+    {
+        UserProfileActivity_.intent(this)
+                .un(ro.getUserByName(userName).getUsername())
                 .start();
     }
 

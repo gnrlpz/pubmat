@@ -38,7 +38,7 @@ public class UserProfileActivity extends AppCompatActivity {
     Button editButton;
 
     @Extra
-    String userID; //get orgID from User clicking on Org Profile!!! //orgID == orgName !!!
+    String un; //get orgID from User clicking on Org Profile!!! //orgID == orgName !!!
 
     @Bean
     RealmOperator realmOperator;
@@ -49,7 +49,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     @AfterViews
     public void init() {
-        thisUser = realmOperator.realm.where(User.class).equalTo("userID", userID).findFirst();
+        thisUser = realmOperator.getUserByName(un);
         userName.setText(thisUser.getOrgName());
         refreshImageView(thisUser.getImagePath(), userDP);
 

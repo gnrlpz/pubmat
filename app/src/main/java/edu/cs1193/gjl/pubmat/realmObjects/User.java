@@ -4,9 +4,8 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
-    @PrimaryKey
-    private String userID;
 
+    @PrimaryKey
     private String username;
     private String password;
 
@@ -24,13 +23,6 @@ public class User extends RealmObject {
         this.orgName = orgName;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
 
     public String getUsername() {
         return username;
