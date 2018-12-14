@@ -23,7 +23,8 @@
         <activity android:name=".MainActivity_" />
         <activity android:name=".ImageActivity_" />
         <activity android:name=".MakePost_" />
-        <activity android:name=".RegisterActivity_"></activity>
+        <activity android:name=".RegisterActivity_" />
+        <activity android:name=".UserProfileActivity_"></activity>
     </application>
 
 </manifest>

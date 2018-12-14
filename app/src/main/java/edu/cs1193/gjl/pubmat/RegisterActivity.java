@@ -12,6 +12,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
@@ -40,12 +41,22 @@ public class RegisterActivity extends AppCompatActivity {
     @Bean
     RealmOperator realmManager;
 
+    @Extra
+    String userIDforEdit;
+
     Uri imageuri;
     String unid;
+
+    String beingEdited;
+    boolean editMode;
 
     @AfterViews
     public void init() {
         unid = UUID.randomUUID().toString();
+        if (!userIDforEdit.equals(null)) {
+            editMode = true;
+            beingEdited = userIDforEdit;
+        }
     }
 
     @Click(R.id.registerButton)
