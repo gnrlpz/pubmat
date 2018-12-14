@@ -6,18 +6,18 @@ import io.realm.annotations.PrimaryKey;
 public class OrgPost extends RealmObject {
 
     @PrimaryKey
-    private int postID;
+    private String postID;
 
     private String originalPoster; //is an OrgName
 
     private String postPhoto;
     private String postCaption;
 
-    public int getPostID() {
+    public String getPostID() {
         return postID;
     }
 
-    public void setPostID(int postID) {
+    public void setPostID(String postID) {
         this.postID = postID;
     }
 

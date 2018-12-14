@@ -53,7 +53,7 @@ public class MakePost extends AppCompatActivity {
         Organization orgPoster = ro.getOrgByName(orgName);
 
         int postCount = orgPoster.getPostCount();
-        or.setPostID(postCount + 1);
+        or.setPostID((postCount + 1)+orgName);
 
         orgPoster.setPostCount(postCount + 1);
 
@@ -80,7 +80,7 @@ public class MakePost extends AppCompatActivity {
                 // save rawImage to file savedImage.jpeg
                 // load file via picasso
                 Organization  o = ro.getOrgByName(orgName);
-                byte[] jpeg = data.getByteArrayExtra((o.getPostCount()+1)+"image.jpg");
+                byte[] jpeg = data.getByteArrayExtra((o.getPostCount()+1)+o.getOrgName()+"image.jpg");
 
                 try {
                     File savedImage = saveFile(jpeg);
@@ -104,7 +104,7 @@ public class MakePost extends AppCompatActivity {
 
         ////File savedImage = new File(getImageDir, Integer.toString(position) + "savedImage.jpeg");
         Organization o = ro.getOrgByName(orgName);
-        File savedImage = new File(getImageDir,  + (o.getPostCount()+1) + "savedImage.jpeg");
+        File savedImage = new File(getImageDir,  + (o.getPostCount()+1) + o.getOrgName() + "savedImage.jpeg");
 
         FileOutputStream fos = new FileOutputStream(savedImage);
         fos.write(jpeg);
