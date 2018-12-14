@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Click(R.id.registerButton)
     public void registerButton() {
-//        RegisterActivity.intent(this).start();
+        RegisterActivity_.intent(this).start();
     }
 
     public void onDestroy() {

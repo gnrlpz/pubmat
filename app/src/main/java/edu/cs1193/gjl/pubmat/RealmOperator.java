@@ -93,6 +93,15 @@ public class RealmOperator {
         return orgPosts;
     }
 
+    public User saveUser(User u)
+    {
+        realm.beginTransaction();
+        User managed = realm.copyToRealmOrUpdate(u);
+        realm.commitTransaction();
+
+        return managed;
+    }
+
     public void close() { realm.close(); }
 
 }
