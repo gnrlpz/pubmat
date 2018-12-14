@@ -40,11 +40,12 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPrefOperator dmc;
 
+    DataAdder dataAdder = new DataAdder();
+
     @AfterViews
     public void init() {
-        Organization org = new Organization();
-        org.setOrgName("CompSAt");
-        realmManager.saveOrg(org);
+        dataAdder.populateOrgs();
+        dataAdder.populatePosts();
 
         dmc = new SharedPrefOperator(getApplicationContext());
         dmc.loadRemSharedPrefs();

@@ -7,8 +7,7 @@ import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 
 public class DataAdder {
 
-    @Bean
-    RealmOperator realm;
+    RealmOperator realm = new RealmOperator();
 
     public void populateOrgs()
     {
