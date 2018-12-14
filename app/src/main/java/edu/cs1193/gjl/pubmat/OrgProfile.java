@@ -60,6 +60,8 @@ public class OrgProfile extends AppCompatActivity {
         feedPosts = realmOperator.getPostsfromOrg(orgID);
 
         postAdapter = new PostAdapter(this, feedPosts);
+
+        feedList.setAdapter(postAdapter);
     }
 
     @Click(R.id.editButton)

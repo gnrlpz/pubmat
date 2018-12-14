@@ -53,7 +53,7 @@ public class OrgEdit extends AppCompatActivity {
     Button saveButton;
 
     @Extra
-    String orgID; //get orgName from Edit Button from OrgProfile!! //orgID == orgName (?)
+    String orgID; //get orgName from Edit Button from OrgProfile!! //orgID == orgName !!!!!
 
     @Bean
     RealmOperator realmOperator;
@@ -67,7 +67,7 @@ public class OrgEdit extends AppCompatActivity {
         saveButton.setText("Save Changes");
         orgName.setText(beingEdited.getOrgName());
         orgDesc.setText(beingEdited.getOrgDesc());
-        refreshImageButton(beingEdited.getOrgPicPath(), orgImage);
+        refreshImageButton(beingEdited.getOrgPicPath());
     }
 
     @Click(R.id.saveButton)
@@ -78,6 +78,7 @@ public class OrgEdit extends AppCompatActivity {
         Organization org = realmOperator.realm.copyFromRealm(beingEdited);
         org.setOrgName(nameTemp);
         org.setOrgDesc(descTemp);
+        org.setOrgPicPath(orgID + "savedImage.jpeg");
 
         realmOperator.saveOrg(org);
         Toast t = Toast.makeText(this, "Org profile edited", Toast.LENGTH_LONG);
@@ -101,7 +102,7 @@ public class OrgEdit extends AppCompatActivity {
 
                 try {
                     File savedImage = saveFile(jpeg);
-                    //refreshImageView(savedImage);
+                    refreshImage(savedImage);
 
                     //imageUri = Uri.fromFile(savedImage);
                 }
@@ -135,7 +136,7 @@ public class OrgEdit extends AppCompatActivity {
         realmOperator.close();
     }
 
-    public void refreshImageButton(String savedImagePath, ImageButton imageButton) {
+    public void refreshImageButton(String savedImagePath) {
         File getImageDir = getExternalCacheDir();
         File savedImage = new File(getImageDir, savedImagePath);
 
@@ -144,8 +145,16 @@ public class OrgEdit extends AppCompatActivity {
                     .load(savedImage)
                     .networkPolicy(NetworkPolicy.NO_CACHE)
                     .memoryPolicy(MemoryPolicy.NO_CACHE)
-                    .into(imageButton);
+                    .into(orgImage);
         }
+    }
+
+    private void refreshImage(File savedImage) {
+        Picasso.with(this)
+                .load(savedImage)
+                .networkPolicy(NetworkPolicy.NO_CACHE)
+                .memoryPolicy(MemoryPolicy.NO_CACHE)
+                .into(orgImage);
     }
 
 }
