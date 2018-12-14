@@ -13,6 +13,7 @@ public class Organization extends RealmObject{
     private String orgShortDesc;
     private String orgPostIDs; //Use gson/json to get the ArrayList
     private String orgPicPath;
+    private int postCount; //used to make IDs for OrgPosts
 
     public int getOrgID() {
         return orgID;
@@ -57,4 +58,12 @@ public class Organization extends RealmObject{
     public String getOrgPicPath() { return orgPicPath; }
 
     public void setOrgPicPath(String orgPicPath) { this.orgPicPath = orgPicPath; }
+
+    public int getPostCount() {
+        return postCount;
+    }
+
+    public void setPostCount(int postCount) {
+        this.postCount = postCount;
+    }
 }

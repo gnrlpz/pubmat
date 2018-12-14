@@ -2,8 +2,6 @@ package edu.cs1193.gjl.pubmat;
 
 import org.androidannotations.annotations.EBean;
 
-import java.util.ArrayList;
-
 import edu.cs1193.gjl.pubmat.realmObjects.OrgPost;
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 import io.realm.Realm;
@@ -53,24 +51,11 @@ public class RealmOperator {
         //return managed;
     }
 
-    public ArrayList<OrgPost> getPostsfromOrg(int orgID) {
+    public void saveOrgPost(OrgPost oP)
+    {
         realm.beginTransaction();
-
-        RealmQuery<OrgPost> query = realm.where(OrgPost.class);
-        query.equalTo("originalPoster", orgID);
-
-
-        RealmResults<OrgPost> o = query.findAll();
-        ArrayList<OrgPost> orgPosts = new ArrayList<>();
-
-
-        for(OrgPost oP : o)
-        {
-            orgPosts.add(oP);
-        }
+        realm.copyToRealmOrUpdate(oP);
         realm.commitTransaction();
-
-        return orgPosts;
     }
 
 }
