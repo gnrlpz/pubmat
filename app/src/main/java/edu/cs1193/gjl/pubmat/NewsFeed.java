@@ -28,7 +28,6 @@ public class NewsFeed extends AppCompatActivity {
     @Bean
     RealmOperator ro;
 
-    ArrayList<OrgPost> feedPosts = new ArrayList<OrgPost>();
     FeedAdapter adapter;
 
     @Extra
@@ -41,18 +40,14 @@ public class NewsFeed extends AppCompatActivity {
     {
         //data
         orgName = ro.getUserByName(userName).getOrgName();
-        OrgPost op1 = new OrgPost();
-        op1.setOriginalPoster("ORG");
-        op1.setPostCaption("This is a test");
-        op1.setPostID(1);
-        op1.setPostPhoto("sample photo path");
-
-        feedPosts.add(op1);
 
         unField.setText(userName);
 
+        ArrayList<OrgPost> orgPosts = new ArrayList<OrgPost>();
+        orgPosts.add(ro.getPosts());
+
         //adapter
-        adapter = new FeedAdapter(this, feedPosts);
+        adapter = new FeedAdapter(this, orgPosts);
         feed.setAdapter(adapter);
 
     }

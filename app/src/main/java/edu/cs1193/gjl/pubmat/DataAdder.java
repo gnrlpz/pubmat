@@ -26,7 +26,7 @@ public class DataAdder {
         o2.setOrgDesc("Unacredited d20s");
         o2.setOrgPicPath("THINCimage.jpg");
         o2.setOrgShortDesc("Unacredited d20s");
-        o2.setPostCount(1);
+        o2.setPostCount(0);
 
         o3.setOrgName("WriterSkill");
         o3.setOrgDesc("Org for writers everywhere!");

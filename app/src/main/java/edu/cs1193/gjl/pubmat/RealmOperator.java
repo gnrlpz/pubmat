@@ -102,6 +102,15 @@ public class RealmOperator {
         return managed;
     }
 
+    public OrgPost getPosts()
+    {
+        realm.beginTransaction();
+        OrgPost op = realm.where(OrgPost.class).findFirst();
+        realm.commitTransaction();
+
+        return op;
+    }
+
     public void close() { realm.close(); }
 
 }
