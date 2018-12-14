@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import edu.cs1193.gjl.pubmat.realmObjects.OrgPost;
 import edu.cs1193.gjl.pubmat.realmObjects.Organization;
+import edu.cs1193.gjl.pubmat.realmObjects.User;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
@@ -78,6 +79,15 @@ public class RealmOperator {
         realm.commitTransaction();
 
         return orgPosts;
+    }
+
+    public User saveUser(User u)
+    {
+        realm.beginTransaction();
+        User managed = realm.copyToRealmOrUpdate(u);
+        realm.commitTransaction();
+
+        return managed;
     }
 
     public void close() { realm.close(); }

@@ -5,20 +5,30 @@ import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject {
     @PrimaryKey
-    private int userID;
+    private String userID;
 
     private String username;
     private String password;
 
     private String subscriptions; //please use gson/json to convert the array
     private String memberships; //please use gson/json to convert the array
-    private String position;
+    private String orgName;
 
-    public int getUserID() {
+    private String imagePath;
+
+    public User() { }
+
+    public User(String username, String position, String password) {
+        this.username = username;
+        this.password = password;
+        this.orgName = position;
+    }
+
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
@@ -54,11 +64,19 @@ public class User extends RealmObject {
         this.memberships = memberships;
     }
 
-    public String getPosition() {
-        return position;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setOrgName(String position) {
+        this.orgName = position;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }
