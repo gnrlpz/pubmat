@@ -63,8 +63,8 @@ public class PostAdapter extends BaseAdapter {
         TextView orgName = linearLayout.findViewById(R.id.orgName);
         TextView postDesc = linearLayout.findViewById(R.id.postDesc);
 
-        ImageView orgPic = linearLayout.findViewById(R.id.imageView4);
-        ImageView postImg = linearLayout.findViewById(R.id.imageView6);
+        ImageView orgPic = linearLayout.findViewById(R.id.postImage);
+        ImageView postImg = linearLayout.findViewById(R.id.orgImage);
 
         OrgPost currItem = (OrgPost) getItem(position);
         Organization org = context.getOrgByName(currItem.getOriginalPoster());

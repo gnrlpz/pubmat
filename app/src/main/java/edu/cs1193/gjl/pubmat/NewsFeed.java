@@ -6,6 +6,7 @@ import android.widget.ListView;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class NewsFeed extends AppCompatActivity {
 
     ArrayList<OrgPost> feedPosts = new ArrayList<OrgPost>();
     FeedAdapter adapter;
+
+    @Extra
+    String orgName;
 
     @AfterViews
     public void init()
@@ -47,6 +51,13 @@ public class NewsFeed extends AppCompatActivity {
     public Organization getOrgByName(String orgName)
     {
         return ro.getOrgByName(orgName);
+    }
+
+    public void onClickMakePost()
+    {
+        MakePost_.intent(this)
+                .orgName(orgName)
+                .start();
     }
 
 }

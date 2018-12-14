@@ -79,7 +79,8 @@ public class MakePost extends AppCompatActivity {
             {
                 // save rawImage to file savedImage.jpeg
                 // load file via picasso
-                byte[] jpeg = data.getByteArrayExtra("rawJpeg");
+                Organization  o = ro.getOrgByName(orgName);
+                byte[] jpeg = data.getByteArrayExtra((o.getPostCount()+1)+"image.jpg");
 
                 try {
                     File savedImage = saveFile(jpeg);
