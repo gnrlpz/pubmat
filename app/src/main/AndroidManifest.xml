@@ -20,7 +20,9 @@
         <activity android:name=".NewsFeed_" />
         <activity android:name=".OrgEdit_" />
         <activity android:name=".OrgProfile_" />
-        <activity android:name=".LoginActivity_"></activity>
+        <activity android:name=".LoginActivity_"/>
+        <activity android:name=".ImageActivity_"/>
+        <activity android:name=".MakePost_"></activity>
     </application>
 
 </manifest>

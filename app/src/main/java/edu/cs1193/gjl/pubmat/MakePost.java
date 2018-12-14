@@ -21,13 +21,13 @@ public class MakePost extends AppCompatActivity {
     RealmOperator ro;
 
     @ViewById
-    ImageView postImage;
+    ImageView postImg;
 
     @ViewById
     EditText postDesc;
 
     @Extra
-    Organization orgPoster; //Pass an Org into this
+    String orgName; //Pass an OrgName into this //changed Organization to String
 
     String postPhoto = "";
 
@@ -38,6 +38,7 @@ public class MakePost extends AppCompatActivity {
         //Save image, somehow?
 
         OrgPost or = new OrgPost();
+        Organization orgPoster = ro.getOrgByName(orgName);
 
         int postCount = orgPoster.getPostCount();
         or.setPostID(postCount + 1);
