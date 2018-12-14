@@ -18,10 +18,10 @@ public class User extends RealmObject {
 
     public User() { }
 
-    public User(String username, String position, String password) {
+    public User(String username, String orgName, String password) {
         this.username = username;
         this.password = password;
-        this.orgName = position;
+        this.orgName = orgName;
     }
 
     public String getUserID() {

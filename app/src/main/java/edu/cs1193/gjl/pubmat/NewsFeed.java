@@ -36,7 +36,7 @@ public class NewsFeed extends AppCompatActivity {
     public void init()
     {
         //data
-        ro.get
+        orgName = ro.getUserByName(userName).getOrgName();
         OrgPost op1 = new OrgPost();
         op1.setOriginalPoster("ORG");
         op1.setPostCaption("This is a test");
@@ -58,7 +58,7 @@ public class NewsFeed extends AppCompatActivity {
         return ro.getOrgByName(orgName);
     }
 
-    @Click(R.id.)
+    @Click(R.id.postButton)
     public void onClickMakePost()
     {
         MakePost_.intent(this)

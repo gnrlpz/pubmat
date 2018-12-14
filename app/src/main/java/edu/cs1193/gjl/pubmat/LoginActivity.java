@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             correct = true;
 //            MainActivity_.intent(this).logMeIn(uname).start();
-            NewsFeed_.intent(this).start();
+            NewsFeed_.intent(this).userName(uname).start();
             finish();
         }
 
