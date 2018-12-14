@@ -20,7 +20,7 @@ public class DataAdder {
         o1.setOrgDesc("MIS and CS parent Organization");
         o1.setOrgPicPath("CompSAtimage.jpg");
         o1.setOrgShortDesc("MIS and CS parent Organization");
-        o1.setPostCount(0);
+        o1.setPostCount(1);
 
         o2.setOrgName("THINC");
         o2.setOrgDesc("Unacredited d20s");
