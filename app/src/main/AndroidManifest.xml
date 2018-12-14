@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".NewsFeed_" />
         <activity android:name=".OrgEdit_" />
-        <activity android:name=".OrgProfile_"></activity>
+        <activity android:name=".OrgProfile_" />
+        <activity android:name=".LoginActivity_"></activity>
     </application>
 
 </manifest>
