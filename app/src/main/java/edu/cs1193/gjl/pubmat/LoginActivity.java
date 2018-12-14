@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Click(R.id.registerButton)
     public void registerButton() {
-        RegisterActivity_.intent(this).start();
+        RegisterActivity_.intent(this).userIDforEdit("").start();
     }
 
     public void onDestroy() {
