@@ -47,8 +47,8 @@ public class OrgProfile extends AppCompatActivity {
     @Bean
     RealmOperator realmOperator;
 
-    //ArrayList<OrgPost> feedPosts = new ArrayList<OrgPost>();
-    FeedAdapter feedAdapter;
+    ArrayList<OrgPost> feedPosts = new ArrayList<OrgPost>();
+    PostAdapter postAdapter;
     Organization thisOrg;
 
     @AfterViews
@@ -57,9 +57,9 @@ public class OrgProfile extends AppCompatActivity {
         orgName.setText(thisOrg.getOrgName());
         refreshImageView(thisOrg.getOrgPicPath(), orgDP);
 
-        //RealmResults<OrgPost> orgPosts = realmOperator.realm.where(OrgPost.class).findAll();
+        feedPosts = realmOperator.getPostsfromOrg(orgID);
 
-        //feedAdapter = new FeedAdapter(this, orgPosts);
+        postAdapter = new PostAdapter(this, feedPosts);
     }
 
     @Click(R.id.editButton)
@@ -76,6 +76,11 @@ public class OrgProfile extends AppCompatActivity {
                     .memoryPolicy(MemoryPolicy.NO_CACHE)
                     .into(imageView);
         }
+    }
+
+    public Organization getOrgByID(int orgID)
+    {
+        return realmOperator.getOrgByID(orgID);
     }
 
 }
