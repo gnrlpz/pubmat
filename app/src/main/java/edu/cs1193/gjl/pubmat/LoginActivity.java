@@ -13,6 +13,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
+import edu.cs1193.gjl.pubmat.realmObjects.Organization;
 import edu.cs1193.gjl.pubmat.realmObjects.User;
 import io.realm.RealmResults;
 
@@ -41,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @AfterViews
     public void init() {
+        Organization org = new Organization();
+        org.setOrgName("CompSAt");
+        realmManager.saveOrg(org);
+
         dmc = new SharedPrefOperator(getApplicationContext());
         dmc.loadRemSharedPrefs();
 
@@ -66,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                 dmc.addToRemPrefs(false, null, null);
             }
             correct = true;
-//            MainActivity_.intent(this).logMeIn(uname).start();
             NewsFeed_.intent(this).userName(uname).start();
             finish();
         }

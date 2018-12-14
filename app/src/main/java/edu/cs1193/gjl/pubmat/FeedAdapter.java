@@ -70,7 +70,7 @@ public class FeedAdapter extends BaseAdapter {
         OrgPost currItem = (OrgPost) getItem(position);
         Organization org = context.getOrgByName(currItem.getOriginalPoster());
 
-        orgName.setText(org.getOrgName());
+        //orgName.setText(org.getOrgName());
         postDesc.setText(currItem.getPostCaption());
 
         //Image stuffs
