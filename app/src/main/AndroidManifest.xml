@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsFeed_"></activity>
+        <activity android:name=".NewsFeed_" />
+        <activity android:name=".OrgEdit_" />
+        <activity android:name=".OrgProfile_"></activity>
     </application>
 
 </manifest>

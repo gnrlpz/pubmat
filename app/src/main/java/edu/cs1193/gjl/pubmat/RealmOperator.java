@@ -41,4 +41,13 @@ public class RealmOperator {
         return o;
     }
 
+    public void saveOrg(Organization org)
+    {
+        realm.beginTransaction();
+        Organization managed = realm.copyToRealmOrUpdate(org);
+        realm.commitTransaction();
+
+        //return managed;
+    }
+
 }
